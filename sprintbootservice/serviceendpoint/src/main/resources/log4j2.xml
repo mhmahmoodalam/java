@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <Appenders>
+        <Console name="CONIO" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss,SSS} %p [%t] (%C{1}:%L) - %m%n"/>
+        </Console>
+        <File name="APPLOG" fileName="${env:RUNWAY_LOG_DIR}/application/service.log"
+              append="false" >
+            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss,SSS} %p [%t] (%C{1}:%L) - %m%n"/>
+        </File>
+        <File name="REQAUDIT" fileName="${env:RUNWAY_LOG_DIR}/application/service_Requests.log" append="true">
+            <JSONLayout complete="false" compact="true" eventEol="true" properties="true" propertiesAsList="false" />
+        </File>
+  </Appenders>
+    <Loggers>
+        <Logger name="RequestAuditLog" level="ALL" >
+            <AppenderRef ref="REQAUDIT" />
+        </Logger>
+        <Logger name="com.ex" level="DEBUG" additivity="false">
+            <AppenderRef ref="APPLOG"/>
+        </Logger>
+        <Logger name="org.springframework" level="WARN" />
+        <Root level="info">
+            <AppenderRef ref="CONIO"/>
+            <AppenderRef ref="APPLOG"/>
+        </Root>
+    </Loggers>
+</Configuration>
