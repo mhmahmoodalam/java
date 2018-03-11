@@ -14,10 +14,8 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import com.ex.model.Customer;
-import com.sun.jersey.core.header.GrammarUtil;
 
 /**
  * author mh.mahmood.alam@gmail.com
